@@ -2,9 +2,6 @@ package Bewakoof;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import net.lightbody.bmp.BrowserMobProxyServer;
-import net.lightbody.bmp.client.ClientUtil;
-import org.openqa.selenium.Proxy;
 
 import static io.restassured.RestAssured.given;
 
@@ -12,21 +9,16 @@ public class ManualHit {
     public static void main(String[] args) {
         RestAssured.baseURI = "https://www.bewakoof.com/v1/carts/apply_coupon?wallet_applied=true";
 
+
+        RestAssured.proxy("200.25.254.193:54240");
+
+
         String requestBody="{\n" +
                 "    \"param\": \"apply_coupon\",\n" +
                 "    \"cart\": {\n" +
                 "        \"coupon\": \"BWKFWV5AGFTR500\"\n" +
                 "    }\n" +
                 "}";
-        // Start BrowserMob Proxy Server
-        BrowserMobProxyServer proxyServer = new BrowserMobProxyServer();
-        proxyServer.start(0);
-
-        // Get the Selenium proxy object
-        Proxy proxySpec = ClientUtil.createSeleniumProxy(proxyServer);
-
-        // Set RestAssured proxy settings
-        RestAssured.proxy(proxySpec.getSocksVersion());
 
 
         Response response=given()
