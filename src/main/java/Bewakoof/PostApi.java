@@ -18,6 +18,15 @@ public class PostApi {
                 "}";
 
 
+//
+//        String[] proxyParts = ProxyPicker.proxy().split(":");
+//        String proxyHost = proxyParts[0];
+//        int proxyPort = Integer.parseInt(proxyParts[1]);
+//
+//        // Set the proxy
+//        RestAssured.proxy(proxyHost, proxyPort);
+
+
         Response response=given()
                 .header("Ab-Id","60")
                 .header("Accept","*/*")
@@ -26,7 +35,6 @@ public class PostApi {
                 .header("Access-Token","M2QxNmQ3NWEyNjQ2NGNjZGI1MWNlYzYyMTVjMGQ2ZjI6YmhheWVrYXIzQGdtYWlsLmNvbQ==")
                 .header("Api-Token","MWY5ZTNmNzFmN2M1ZTUyMjkwNjM2NGMzNmNjZTA3N2Q6M2RhMmI3OTgtNTY2MC00ZDRhLWJhZWQtNTZlMDI2MWRlYmZm")
                 .header("Client-Device-Token","MWY5ZTNmNzFmN2M1ZTUyMjkwNjM2NGMzNmNjZTA3N2Q6M2RhMmI3OTgtNTY2MC00ZDRhLWJhZWQtNTZlMDI2MWRlYmZm")
-                //.header("Content-Length","60")
                 .header("Content-Type","application/json")
                 .header("Cookie","_gcl_au=1.1.1298881265.1702560355; _gid=GA1.2.1496931767.1702560356; _scid=c8292ab1-7b0e-4587-a5fc-39528e39aea4; _sctr=1%7C1702492200000; jwt_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMjUzOTA3NywiZXhwIjoxNzAzMTY1MTkyfQ.2yCf9nqm7P2Il02uL7QgCTPudV4n7XLhVBymmqDAbAw; WZRK_G=fa18433663a74912b8a4ff1a49123de5; userType=new_user_score; isMember=false; abId=60; isNewUser=true; _scid_r=c8292ab1-7b0e-4587-a5fc-39528e39aea4; _ga=GA1.1.136487986.1702560356; _gat=1; WZRK_S_8R9-845-Z84Z=%7B%22p%22%3A1%2C%22s%22%3A1702575699%2C%22t%22%3A1702575699%7D; _ga_H9S2VC0HED=GS1.1.1702575699.3.1.1702575741.18.0.0")
                 .header("Dnt","1")
@@ -58,7 +66,7 @@ public class PostApi {
         int responseStatus=response.getStatusCode();
 
 
-        System.out.println(couponCode +" - "+responseStatus);
+        System.out.println(couponCode +" - "+responseStatus+" - "+responseBody);
 
         JsonPath responseBodyPath= new JsonPath(responseBody);
 
